@@ -421,6 +421,29 @@
   </aside>
 
 </div>
+  <!-- Text to Voice Section -->
+<section style="text-align:center; margin:50px 0;">
+  <h2>Text to Voice</h2>
+  <textarea id="text" placeholder="Type something here..." 
+            style="width:80%; height:100px; font-size:16px; padding:10px;"></textarea><br>
+  <button onclick="speakText()" 
+          style="margin-top:15px; padding:10px 20px; font-size:16px; cursor:pointer;">
+    Speak
+  </button>
+</section>
+
+<script>
+  function speakText() {
+    let text = document.getElementById("text").value;
+    if (!text.trim()) {
+      alert("Please type something!");
+      return;
+    }
+    let speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US"; // Change to en-GB, fr-FR, etc. if you want
+    speechSynthesis.speak(speech);
+  }
+</script>
 
 </body>
 </html>
