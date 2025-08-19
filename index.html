@@ -3,447 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Landing Page</title>
+  <title>My One Page Website</title>
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* Reset + Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    html { scroll-behavior: smooth; }
 
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    /* Navigation Bar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.7);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      z-index: 1000;
-    }
-
-    .logo {
-      color: #fff;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-
-    .nav-links li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s;
-    }
-
-    .nav-links li a:hover {
-      color: #06b6d4;
-    }
-
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Hero Section */
-    #hero {
-      height: 100vh;
-      background: url('https://picsum.photos/1600/900?random=1') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      padding: 20px;
-    }
-
-    #hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    #hero p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-
-    #hero a {
-      display: inline-block;
-      background: #06b6d4;
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    #hero a:hover {
-      background: #0284a8;
-    }
+    /* Navbar */
+    header { background: #222; position: fixed; top: 0; width: 100%; z-index: 1000; }
+    nav ul { display: flex; justify-content: center; list-style: none; padding: 15px; }
+    nav ul li { margin: 0 20px; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+    nav ul li a:hover, nav ul li a.active { color: #ff6600; border-bottom: 2px solid #ff6600; }
 
     /* Sections */
-    section {
-      padding: 100px 20px;
-      text-align: center;
-    }
+    section { min-height: 100vh; padding: 100px 20px 60px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+    section h1 { font-size: 2.5rem; margin-bottom: 20px; }
+    section p { max-width: 700px; text-align: center; font-size: 1.1rem; margin-bottom: 20px; }
 
-    #about {
-      background: #f4f4f4;
-    }
+    /* Buttons */
+    .btn { display: inline-block; padding: 12px 20px; background: #222; color: #fff; border-radius: 8px; text-decoration: none; transition: background 0.3s; }
+    .btn:hover { background: #444; }
 
-    #services {
-      background: #e2e8f0;
-    }
+    /* About */
+    .about-content { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; max-width: 1000px; margin: auto; }
+    .about-content img { width: 280px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .about-text { flex: 1; }
+    .about-text h2 { margin-bottom: 15px; }
 
-    #contact {
-      background: #f9fafb;
-    }
+    /* Portfolio */
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: auto; }
+    .portfolio-item { background: #f4f4f4; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 
-    h2 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-    }
+    /* Blog */
+    .blog-posts { max-width: 800px; margin: auto; }
+    .post { margin-bottom: 40px; padding: 20px; background: #fafafa; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 
-    p {
-      max-width: 700px;
-      margin: 0 auto;
-    }
+    /* Contact */
+    form { max-width: 500px; width: 100%; display: flex; flex-direction: column; }
+    form input, form textarea { margin-bottom: 15px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; }
+    form button { padding: 12px; background: #222; color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s; }
+    form button:hover { background: #444; }
+
+    /* Footer */
+    footer { text-align: center; padding: 20px; background: #222; color: #fff; }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="logo">MyBrand</div>
-    <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Hero -->
-  <section id="hero">
-    <div>
-      <h1>Welcome to My Landing Page</h1>
-      <p>Clean, simple, and modern design in minutes!</p>
-      <a href="#about">Get Started</a>
-    </div>
+  <!-- Home -->
+  <section id="home">
+    <h1>Welcome to My Website</h1>
+    <p>I am a graphic designer, storyteller, and aspiring art director.  
+       I build visuals that reflect culture, creativity, and destiny.</p>
+    <a href="#about" class="btn">Learn More</a>
   </section>
 
   <!-- About -->
   <section id="about">
-    <h2>About Us</h2>
-    <p>
-      I am Nathaniel N Nignantoni from Ghana,and am a content creator. feel free to contact me.
-    </p>
+    <h1>About Me</h1>
+    <div class="about-content">
+      <img src="assets/profile.jpg" alt="Profile Picture">
+      <div class="about-text">
+        <h2>Hello, I'm Nathaniel</h2>
+        <p>I create visuals that blend African culture and modern creativity.  
+           My work tells stories that inspire and empower the youth.</p>
+        <p>Outside design, I write, draw, and explore the world of art and storytelling.</p>
+        <a href="#portfolio" class="btn">View My Work</a>
+      </div>
+    </div>
   </section>
 
-  <!-- Services -->
-  <section id="services">
-    <h2>Our Services</h2>
-    <p>
-      visual artist | web development | website creation | graphic design.
-    </p>
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <h1>My Portfolio</h1>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">Project 1</div>
+      <div class="portfolio-item">Project 2</div>
+      <div class="portfolio-item">Project 3</div>
+      <div class="portfolio-item">Project 4</div>
+    </div>
   </section>
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Portfolio Builder — Landing</title>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --bg:#f3f4f6;
-    --card:#ffffff;
-    --muted:#64748b;
-    --accent:#0f1724;       /* dark text */
-    --primary:#06b6d4;      /* accent CTA */
-    --shadow: 0 18px 40px rgba(15,23,42,0.06);
-    --glass: rgba(15,23,42,0.03);
-  }
-
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--accent);background:linear-gradient(180deg,var(--bg) 0%, #ffffff 100%);-webkit-font-smoothing:antialiased}
-  a{color:inherit;text-decoration:none}
-  img{max-width:100%;display:block}
-
-  /* page layout */
-  .site {max-width:1200px;margin:36px auto;padding:20px;display:grid;grid-template-columns:1fr 340px;gap:28px}
-  @media (max-width:980px){ .site{grid-template-columns:1fr;padding:18px} .right-col{position:relative;top:auto} }
-
-  /* top nav */
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-  .brand{display:flex;align-items:center;gap:12px;font-weight:700}
-  .brand .logo{width:36px;height:36px;border-radius:8px;background:linear-gradient(180deg,#111827,#0b1220);display:inline-block}
-  .nav-links{display:flex;gap:18px;align-items:center;color:var(--muted);font-weight:600}
-  .nav-links a:hover{color:var(--primary)}
-  .nav .cta{background:#0b1220;color:#fff;padding:8px 12px;border-radius:8px;font-weight:700}
-
-  /* Hero / preview card */
-  .hero{background:transparent;padding:6px 0}
-  .hero-inner{background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.99));padding:40px;border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--glass)}
-  .hero h1{font-size:40px;line-height:1.02;margin:0;font-weight:300;color:#0b1220}
-  .hero h1 em{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;color:#0b1220}
-  .hero p{margin:14px 0 20px;color:var(--muted);max-width:70%}
-  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-  .email-form{display:inline-flex;border-radius:10px;overflow:hidden;border:1px solid rgba(15,23,42,0.06);box-shadow:0 6px 18px rgba(2,6,23,0.03)}
-  .email-form input{padding:12px 14px;border:0;min-width:280px;font-size:15px}
-  .email-form button{background:var(--accent);color:#fff;padding:12px 16px;border:0;font-weight:700;cursor:pointer}
-
-  /* large preview card like screenshot */
-  .preview-card{margin-top:24px;background:var(--card);border-radius:14px;padding:18px;border:1px solid var(--glass);box-shadow:0 30px 60px rgba(2,6,23,0.06)}
-  .profile-row{display:flex;gap:18px;align-items:center}
-  .profile-avatar{width:84px;height:84px;border-radius:12px;overflow:hidden;flex-shrink:0;border:1px solid rgba(15,23,42,0.04)}
-  .profile-avatar img{width:100%;height:100%;object-fit:cover}
-  .profile-meta h3{margin:0;font-size:1.05rem}
-  .profile-meta p{margin:6px 0;color:var(--muted);font-size:0.95rem}
-  .profile-actions{margin-top:12px;display:flex;gap:10px}
-  .btn{background:#0b1220;color:#fff;padding:8px 12px;border-radius:9px;font-weight:700}
-  .btn.secondary{background:transparent;border:1px solid rgba(15,23,42,0.06);color:var(--accent)}
-
-  .thumbs{display:flex;gap:10px;margin-top:14px}
-  .thumb{width:86px;height:52px;border-radius:8px;overflow:hidden;border:1px solid rgba(15,23,42,0.03);background:#f4f6f8}
-
-  /* Features grid */
-  .section{margin-top:28px}
-  .section h2{font-size:20px;text-align:center;margin:8px 0 18px;color:#0b1220}
-  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media (max-width:980px){ .features-grid{grid-template-columns:repeat(1,1fr)} }
-  .feature{background:var(--card);padding:18px;border-radius:12px;border:1px solid var(--glass);box-shadow:0 12px 30px rgba(2,6,23,0.04)}
-  .feature h4{margin:0 0 8px}
-  .feature p{margin:0;color:var(--muted)}
-
-  /* Pricing cards */
-  .pricing{display:flex;gap:14px;align-items:stretch;justify-content:center;margin-top:18px}
-  .plan{background:var(--card);padding:18px;border-radius:12px;border:1px solid var(--glass);box-shadow:0 12px 30px rgba(2,6,23,0.04);width:100%}
-  .plan.featured{border:2px solid #e6f9fb;box-shadow:0 20px 60px rgba(6,182,212,0.08);transform:translateY(-6px)}
-  .plans-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  @media (max-width:980px){ .plans-row{grid-template-columns:1fr} }
-
-  /* Why choose / compare */
-  .compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
-  .compare .card{padding:16px}
-
-  /* FAQ */
-  .faq{margin-top:20px}
-  details{background:var(--card);padding:12px;border-radius:10px;border:1px solid var(--glass);box-shadow:0 8px 20px rgba(2,6,23,0.03)}
-  details summary{cursor:pointer;font-weight:600}
-  details p{margin:8px 0 0;color:var(--muted)}
-
-  /* right column (sticky stack) */
-  .right-col{position:sticky;top:28px;align-self:start;display:flex;flex-direction:column;gap:14px}
-  .side-card{background:var(--card);padding:14px;border-radius:12px;border:1px solid var(--glass);box-shadow:0 12px 30px rgba(2,6,23,0.04)}
-  .small-meta{color:var(--muted);font-size:0.95rem}
-
-  /* footer */
-  footer{margin-top:36px;padding:28px 0;text-align:center;color:var(--muted);font-size:14px}
-
-  /* small helpers */
-  .muted{color:var(--muted)}
-</style>
-</head>
-<body>
-
-<div class="site">
-
-  <!-- MAIN (left) -->
-  <div>
-
-    <!-- nav -->
-    <div class="nav">
-      <div class="brand"><span class="logo" aria-hidden></span> Pagey</div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Other choices</a>
-        <a href="#faq">FAQ</a>
+  <!-- Blog -->
+  <section id="blog">
+    <h1>My Blog</h1>
+    <div class="blog-posts">
+      <div class="post">
+        <h2>Blog Post One</h2>
+        <p>This is a sample blog post about creativity, design, and storytelling.</p>
       </div>
-      <div class="cta">Try Pagey →</div>
+      <div class="post">
+        <h2>Blog Post Two</h2>
+        <p>Another inspiring story that shares the journey of art and passion.</p>
+      </div>
     </div>
-
-    <!-- hero + preview -->
-    <section class="hero" id="hero">
-      <div class="hero-inner">
-        <h1>Create <em>portfolios &amp; CV</em> in minutes, not hours.</h1>
-        <p>Stop spending hours on building personal pages and CVs. Maintain one portfolio for freelance, job seeking, and personal projects. Simplify process & save time.</p>
-
-        <div class="cta-row">
-          <form class="email-form" onsubmit="event.preventDefault();alert('Thanks — join request received!')">
-            <input type="email" placeholder="john@example.com" required>
-            <button type="submit">Join the waitlist →</button>
-          </form>
-        </div>
-
-        <!-- preview card -->
-        <div class="preview-card" aria-hidden="false">
-          <div class="profile-row">
-            <div class="profile-avatar"><img src="https://i.imgur.com/MoqCmTR.jpeg" alt="avatar"></div>
-            <div class="profile-meta">
-              <h3>Hello, I’m Nathaniel</h3>
-              <p class="muted">Visual designer • Branding, UI/UX & illustration. I create compelling visuals that tell stories.</p>
-              <div class="profile-actions">
-                <button class="btn">Book a call</button>
-                <button class="btn secondary">Send email</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="thumbs">
-            <div class="thumb"><img src="https://i.imgur.com/aBgNvVI.jpeg" alt=""></div>
-            <div class="thumb"><img src="https://i.imgur.com/xFHUF8Z.png" alt=""></div>
-            <div class="thumb"><img src="https://i.imgur.com/MoqCmTR.jpeg" alt=""></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- features -->
-    <section class="section" id="features">
-      <h2>Set of tools, that help you get a new <span style="font-style:italic">opportunity!</span></h2>
-      <div class="features-grid">
-        <div class="feature"><h4>Create Portfolio Faster Than Ever</h4><p>Pre-designed sections and templates so you launch quickly.</p></div>
-        <div class="feature"><h4>Generate Resume</h4><p>Export a neat resume from your profile with one click.</p></div>
-        <div class="feature"><h4>Pre-made Sections</h4><p>About, Work, Contact and more — ready to use.</p></div>
-        <div class="feature"><h4>Custom Subdomain</h4><p>Publish under yourname.pagey or your own domain.</p></div>
-        <div class="feature"><h4>AI Functionalities</h4><p>Auto-suggest descriptions and improve copy with AI.</p></div>
-        <div class="feature"><h4>Social & Integrations</h4><p>Embed Instagram, Dribbble and other social previews.</p></div>
-      </div>
-    </section>
-
-    <!-- pricing -->
-    <section class="section" id="pricing">
-      <h2>Choose the best plan for your needs</h2>
-      <div class="plans-row" style="margin-top:14px">
-        <div class="plan">
-          <h3 style="margin:0 0 8px">Free</h3>
-          <p class="muted">$0 / month</p>
-          <ul style="margin-top:10px;color:var(--muted);line-height:1.6">
-            <li>Single page</li>
-            <li>Basic templates</li>
-          </ul>
-        </div>
-        <div class="plan featured">
-          <h3 style="margin:0 0 8px">Basic</h3>
-          <p class="muted">$9 / month</p>
-          <ul style="margin-top:10px;color:var(--muted);line-height:1.6">
-            <li>Custom domain</li>
-            <li>Multiple projects</li>
-          </ul>
-        </div>
-        <div class="plan">
-          <h3 style="margin:0 0 8px">Pro</h3>
-          <p class="muted">Custom</p>
-          <ul style="margin-top:10px;color:var(--muted);line-height:1.6">
-            <li>Team & priority support</li>
-            <li>Advanced analytics</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- why compare + FAQ -->
-    <section class="section">
-      <h2 style="text-align:center">Why Pagey Stands Out?</h2>
-      <div class="compare" style="margin-top:12px">
-        <div class="card side-card">
-          <h4 style="margin:0 0 8px">Other solutions</h4>
-          <ul class="muted" style="margin:0;padding-left:18px;line-height:1.6">
-            <li>Complex to setup</li>
-            <li>Limited templates</li>
-          </ul>
-        </div>
-        <div class="card side-card">
-          <h4 style="margin:0 0 8px">Pagey</h4>
-          <ul class="muted" style="margin:0;padding-left:18px;line-height:1.6">
-            <li>Built-in templates & AI</li>
-            <li>Easy publishing</li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="faq" class="faq" style="margin-top:20px">
-        <h2 style="text-align:center">Your Questions, Answered</h2>
-        <div style="margin-top:12px;display:grid;gap:12px">
-          <details>
-            <summary>What is Pagey?</summary>
-            <p>Pagey is a tool to create portfolios and CVs quickly with templates and AI help.</p>
-          </details>
-          <details>
-            <summary>How much does it cost?</summary>
-            <p>We offer free, basic and pro plans. Choose what suits your needs.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <small>&copy; 2025 Nathaniel N Graphics • Built with care</small>
-    </footer>
-  </div>
-
-  <!-- RIGHT column (sticky) -->
-  <aside class="right-col">
-    <div class="side-card">
-      <small class="muted">Publish and share your site</small>
-      <p style="margin:8px 0 0;font-weight:700">Custom domain & one-click deploy</p>
-    </div>
-
-    <div class="side-card">
-      <small class="muted">Designed to speed you up</small>
-      <p style="margin:8px 0 0">Pre-made sections, export and AI features</p>
-    </div>
-
-    <div class="side-card">
-      <small class="muted">Quick contact</small>
-      <p style="margin:8px 0 0"><a href="mailto:kingspibody@gmail.com">kingspibody@gmail.com</a></p>
-      <p class="muted" style="margin-top:6px">Based in Ghana • Freelance</p>
-    </div>
-  </aside>
-</body>
-</html>
+  </section>
 
   <!-- Contact -->
   <section id="contact">
-    <h2>Contact Us</h2>
-    <p>
-      you can contact me :kingspibody@gmail.com, 0548227647, contact us.style:button 
-    </p>
+    <h1>Contact Me</h1>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
   </section>
-  
 
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Nignatoni Nathaniel | All Rights Reserved</p>
+  </footer>
 
+  <!-- Script for active nav highlight -->
+  <script>
+    window.addEventListener("scroll", () => {
+      let sections = document.querySelectorAll("section");
+      let navLinks = document.querySelectorAll("nav ul li a");
 
+      sections.forEach(sec => {
+        let top = window.scrollY;
+        let offset = sec.offsetTop - 150;
+        let height = sec.offsetHeight;
+        let id = sec.getAttribute("id");
 
-
-
-
-
-
-Funny Talking Cat (No React) body { font-family: system-ui, Arial, sans-serif; background:#0f172a; color:#e2e8f0; margin:0; } .wrap { max-width: 800px; margin: 0 auto; padding: 24px; } h1 { text-align:center; margin: 8px 0 16px; } .card { background:#111827; border-radius: 16px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.35); } .grid { display:grid; grid-template-columns: 1fr; gap:16px; } @media (min-width: 800px){ .grid { grid-template-columns: 1fr 1fr; } } button, input[type="range"] { width: 100%; } button { background:#4f46e5; border:none; color:white; padding:12px 14px; border-radius:12px; font-size:16px; cursor:pointer; margin:6px 0; } button:hover { filter: brightness(1.05); } button.alt { background:#059669; } button.warn { background:#ef4444; } .hint { color:#94a3b8; font-size: 12px; } .status { font-size: 14px; color:#cbd5e1; margin-top:8px; } <pre><code>/* Simple SVG cat */ .catbox{ display:flex; align-items:center; justify-content:center; padding:16px; } svg{ width: 260px; height:260px; } </code></pre> 
-Funny Talking Cat 😺
-<div class="card catbox"> <!-- SVG Cat --> <svg id="catSvg" viewBox="0 0 200 200" aria-label="talking cat"> <defs> <radialGradient id="face" cx="50%" cy="50%" r="60%"> <stop offset="0%" stop-color="#cbd5e1"/> <stop offset="100%" stop-color="#94a3b8"/> </radialGradient> </defs> <circle cx="100" cy="100" r="80" fill="url(#face)" stroke="#0f172a" stroke-width="3"></circle> <path d="M40 55 L25 10 L75 45 Z" fill="#94a3b8" stroke="#0f172a" stroke-width="3"></path> <path d="M160 55 L125 45 L175 10 Z" fill="#94a3b8" stroke="#0f172a" stroke-width="3"></path> <ellipse cx="70" cy="95" rx="12" ry="16" fill="#0f172a"></ellipse> <ellipse cx="130" cy="95" rx="12" ry="16" fill="#0f172a"></ellipse> <polygon points="95,115 105,115 100,122" fill="#ef4444"></polygon> <ellipse id="mouth" cx="100" cy="135" rx="18" ry="8" fill="#111827" opacity="0.95"></ellipse> <!-- whiskers --> <line id="w1" x1="30" y1="120" x2="70" y2="120" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/> <line id="w2" x1="30" y1="135" x2="70" y2="135" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/> <line id="w3" x1="30" y1="150" x2="70" y2="150" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/> <line id="w4" x1="130" y1="120" x2="170" y2="120" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/> <line id="w5" x1="130" y1="135" x2="170" y2="135" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/> <line id="w6" x1="130" y1="150" x2="170" y2="150" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/> </svg> </div> <div class="card"> <div> <button id="btnStart" class="alt">🎙️ Start Recording</button> <button id="btnStop" class="warn">⏹ Stop Recording</button> <button id="btnPlay">▶️ Play Cat Voice</button> <a id="download" style="display:none" download>⬇️ Download Recording</a> </div> <div style="margin-top:12px;"> <label>Pitch (speed): <span id="pitchVal">1.60x</span></label> <input id="pitch" type="range" min="0.6" max="2.0" step="0.01" value="1.60" /> <div class="hint">Higher = squeaky cat • Lower = deep monster</div> </div> <div class="status" id="status">Status: Ready</div> <audio id="player" controls style="width:100%; margin-top:8px;"></audio> <div class="hint">Your audio stays on-device. Mic requires HTTPS or http://localhost.</div> </div> </div> 
-// Elements const btnStart = document.getElementById('btnStart'); const btnStop = document.getElementById('btnStop'); const btnPlay = document.getElementById('btnPlay'); const player = document.getElementById('player'); const statusEl = document.getElementById('status'); const pitch = document.getElementById('pitch'); const pitchVal = document.getElementById('pitchVal'); const download = document.getElementById('download'); const mouth = document.getElementById('mouth'); const whiskers = [document.getElementById('w1'),document.getElementById('w2'),document.getElementById('w3'),document.getElementById('w4'),document.getElementById('w5'),document.getElementById('w6')]; // State let mediaRecorder = null; let chunks = []; let audioBlob = null; let audioCtx = null, analyser = null, srcNode = null, rafId = null; function setStatus(t){ statusEl.textContent = 'Status: ' + t; } function pickMime(){ const opts = [ 'audio/webm;codecs=opus', 'audio/webm', 'audio/ogg;codecs=opus', 'audio/ogg' ]; for (const m of opts){ if (MediaRecorder.isTypeSupported(m)) return m; } return ''; } function animateMouthStart(){ if (!analyser) return; const bufLen = analyser.fftSize; const data = new Uint8Array(bufLen); function tick(){ analyser.getByteTimeDomainData(data); let sum=0; for(let i=0;i<bufLen;i++){ const v=(data[i]-128)/128; sum+=v*v; } const rms = Math.sqrt(sum/bufLen); // 0..1 const open = Math.min(1, rms*3); mouth.setAttribute('ry', String(8 + open*12)); // small whisker wiggle whiskers.forEach((w, i)=>{ const baseY = [120,135,150,120,135,150][i]; const wig = (i<3?1:-1) * open*6; w.setAttribute('y1', String(baseY - wig)); w.setAttribute('y2', String(baseY + wig)); }); rafId = requestAnimationFrame(tick); } cancelAnimationFrame(rafId); rafId = requestAnimationFrame(tick); } function animateMouthStop(){ cancelAnimationFrame(rafId); rafId=null; mouth.setAttribute('ry','8'); } async function ensureAudioGraph(){ if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); if (!analyser){ analyser = audioCtx.createAnalyser(); analyser.fftSize = 2048; } if (srcNode) try{ srcNode.disconnect(); }catch{} srcNode = audioCtx.createMediaElementSource(player); srcNode.connect(analyser); analyser.connect(audioCtx.destination); } // Recording btnStart.onclick = async () => { try{ const stream = await navigator.mediaDevices.getUserMedia({ audio: true }); const mime = pickMime(); mediaRecorder = new MediaRecorder(stream, mime?{mimeType:mime}:{}) chunks = []; mediaRecorder.ondataavailable = (e)=>{ if(e.data && e.data.size>0) chunks.push(e.data); }; mediaRecorder.onstart = ()=> setStatus('Recording... (speak)'); mediaRecorder.onstop = ()=>{ setStatus('Processing...'); }; mediaRecorder.start(); }catch(err){ console.error(err); setStatus('Mic error: ' + (err.message || err.name || 'Unknown')); } }; btnStop.onclick = async () => { try{ mediaRecorder && mediaRecorder.stop(); }catch{} // Wait a moment for dataavailable to fire setTimeout(async ()=>{ if (!chunks.length){ setStatus('No audio captured'); return; } audioBlob = new Blob(chunks, { type: chunks[0].type || 'audio/webm' }); const url = URL.createObjectURL(audioBlob); player.src = url; download.href = url; download.download = 'talking-cat.webm'; download.style.display='inline-block'; setStatus('Ready to play'); }, 100); }; btnPlay.onclick = async () => { if (!audioBlob){ setStatus('Record first'); return; } try{ await ensureAudioGraph(); player.playbackRate = parseFloat(pitch.value); // funny pitch await player.play(); setStatus('Playing...'); animateMouthStart(); }catch(err){ console.error(err); setStatus('Playback error: ' + (err.message || err.name)); } }; player.onended = ()=>{ animateMouthStop(); setStatus('Ready'); }; // UI pitch.oninput = ()=>{ pitchVal.textContent = parseFloat(pitch.value).toFixed(2)+'x'; }; 
-
-
+        if (top >= offset && top < offset + height) {
+          navLinks.forEach(link => {
+            link.classList.remove("active");
+            document.querySelector("nav ul li a[href*=" + id + "]").classList.add("active");
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
